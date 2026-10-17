@@ -1,0 +1,10 @@
+{
+  "description": "This web application offers a comprehensive platform for businesses to showcase their services, portfolio, and facilitate bookings, enhancing user engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
