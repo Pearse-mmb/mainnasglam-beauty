@@ -34,7 +34,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               onClick={() => go('home')}
               className="font-display text-2xl font-medium text-[#FAF8F4] hover:text-[#C8956C] mb-4 block"
             >
-              Amina Beauty Glam
+           Mainnasglam
             </button>
             <p className="text-[#9A928A] text-sm leading-relaxed max-w-xs">
               Professional makeup artist based in Glasgow, Scotland. Glam, Bridal, Birthday, Photoshoot and Lash transformations.
@@ -81,7 +81,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <h4 className="text-xs font-medium tracking-widest uppercase text-[#6A6260] mb-5">Get in Touch</h4>
             <div className="flex flex-col gap-3 text-sm text-[#9A928A]">
-              <span>Glasgow, Scotland</span>
+              <span>Glasgow, United Kingdom</span>
               <button
                 onClick={() => go('contact')}
                 className="text-left text-[#C8956C] hover:text-[#FAF8F4]"
@@ -101,7 +101,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-[#6A6260]">
-          <p>© {new Date().getFullYear()} Amina Beauty Glam. Glasgow, Scotland. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Mainnasglam Glasgow, United Kingdom. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#9A928A] tracking-widest uppercase">Instagram</a>
             <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#9A928A] tracking-widest uppercase">TikTok</a>
