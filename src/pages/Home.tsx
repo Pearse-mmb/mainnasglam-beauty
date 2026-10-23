@@ -1,3 +1,4 @@
+
 type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact' | 'booking'
 
 interface HomeProps {
@@ -5,7 +6,7 @@ interface HomeProps {
 }
 
 const INSTAGRAM_DM = 'https://www.instagram.com/mainnasglam_beauty/'
-   
+
 export default function Home({ onNavigate }: HomeProps) {
   const go = (page: Page) => {
     onNavigate(page)
@@ -22,20 +23,22 @@ export default function Home({ onNavigate }: HomeProps) {
           className="absolute inset-0 w-full h-full object-cover object-center md:object-[center_30%] transition-transform duration-700"
         />
 
-        {/* Enhanced gradient for high contrast on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#211713] via-[#211713]/75 to-[#211713]/30" />
+        {/* Dark espresso overlay for improved mobile readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#170F0C] via-[#170F0C]/85 to-[#170F0C]/50" />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full z-10">
-          <p className="text-[#E0A96D] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-4 font-semibold">
+          <p className="text-[#C7B5A5] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-4 font-semibold">
             Beauty & Self-Care · Glasgow, United Kingdom
           </p>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-normal tracking-[-0.035em] text-[#FBF6F0] leading-[1.1] mb-6 max-w-4xl">
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-normal tracking-[-0.035em] text-[#E8D8C8] leading-[1.1] mb-6 max-w-4xl">
             Where Beauty <br />
-            <em className="text-[#E0A96D] not-italic font-serif">Meets Confidence</em>
+            <em className="text-[#B89A83] not-italic font-serif">
+              Meets Confidence
+            </em>
           </h1>
 
-          <p className="text-[#FBF6F0]/90 text-sm sm:text-base leading-relaxed max-w-2xl mb-8 font-light">
+          <p className="text-[#D0C0B2] text-sm sm:text-base leading-relaxed max-w-2xl mb-8 font-normal">
             Makeup · Microblading · Lashes · Braids · Waxing
             <br className="hidden sm:block" />
             <span className="block sm:inline mt-1 sm:mt-0">
@@ -46,71 +49,71 @@ export default function Home({ onNavigate }: HomeProps) {
           <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto">
             <button
               onClick={() => go('portfolio')}
-              className="w-full sm:w-auto px-8 py-3.5 bg-[#FBF6F0] text-[#211713] text-sm font-semibold tracking-wide hover:bg-[#E0A96D] hover:text-[#211713] transition-colors text-center"
+              className="w-full sm:w-auto px-8 py-3.5 bg-[#E8D8C8] text-[#211713] text-sm font-semibold tracking-wide hover:bg-[#B89A83] transition-colors text-center"
               style={{ borderRadius: 'var(--radius)' }}
             >
               Explore our services
             </button>
 
-                      <a
-            href="https://www.instagram.com/mainnasglam_beauty/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-3.5 border border-[#FBF6F0]/60 text-[#FBF6F0] text-sm font-semibold tracking-wide hover:border-[#E0A96D] hover:text-[#E0A96D] transition-colors text-center"
-            style={{ borderRadius: 'var(--radius)' }}
-          >
-            Book via Instagram
-          </a>
+            <a
+              href={INSTAGRAM_DM}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-3.5 border border-[#C7B5A5]/70 text-[#E8D8C8] text-sm font-semibold tracking-wide hover:border-[#B89A83] hover:text-[#B89A83] transition-colors text-center"
+              style={{ borderRadius: 'var(--radius)' }}
+            >
+              Book via Instagram
+            </a>
           </div>
         </div>
       </section>
 
       {/* Intro statement */}
-      {/* Intro statement */}
-<section className="py-16 md:py-28 bg-[#FBF6F0]">
-  <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-    <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
-      <div>
-        <p className="text-[#8C5228] text-[11px] sm:text-xs tracking-[0.2em] uppercase font-semibold mb-3">
-          Mainnasglam Beauty
-        </p>
+      <section className="py-16 md:py-28 bg-[#FBF6F0]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <p className="text-[#8C5228] text-[11px] sm:text-xs tracking-[0.2em] uppercase font-semibold mb-3">
+                Mainnasglam Beauty
+              </p>
 
-        <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-[-0.035em] text-[#211713] leading-tight mb-5">
-          Hey Queens and Kings, <br className="hidden sm:block" />
-          <em className="text-[#8C5228] not-italic font-serif">it’s lovely to have you here.</em>
-        </h2>
+              <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-[-0.035em] text-[#211713] leading-tight mb-5">
+                Hey Queens and Kings, <br className="hidden sm:block" />
+                <em className="text-[#8C5228] not-italic font-serif">
+                  it’s lovely to have you here.
+                </em>
+              </h2>
 
-        <p className="text-[#51433A] text-sm sm:text-base leading-relaxed mb-4">
-          I’m Fatima, a home-based beauty service provider in Glasgow. Our services include Makeup, Microblading, Lash Extensions, and Braids.
-        </p>
+              <p className="text-[#51433A] text-sm sm:text-base leading-relaxed mb-4">
+                I’m Fatima, a home-based beauty service provider in Glasgow. Our services include Makeup, Microblading, Lash Extensions, and Braids.
+              </p>
 
-        <p className="text-[#51433A] text-sm sm:text-base leading-relaxed mb-6">
-          I aim to slay you to perfection. You can rest assured to have a personalized, well-pampered, and comfortable session with me — and I just can’t wait to have you!
-        </p>
+              <p className="text-[#51433A] text-sm sm:text-base leading-relaxed mb-6">
+                I aim to slay you to perfection. You can rest assured to have a personalized, well-pampered, and comfortable session with me — and I just can’t wait to have you!
+              </p>
 
-        <button
-          onClick={() => go('about')}
-          className="text-sm font-medium text-[#211713] border-b border-[#211713] pb-0.5 hover:text-[#8C5228] hover:border-[#8C5228] transition-colors inline-flex items-center gap-1.5"
-        >
-          About Mainnasglam <span className="text-base">→</span>
-        </button>
-      </div>
+              <button
+                onClick={() => go('about')}
+                className="text-sm font-medium text-[#211713] border-b border-[#211713] pb-0.5 hover:text-[#8C5228] hover:border-[#8C5228] transition-colors inline-flex items-center gap-1.5"
+              >
+                About Mainnasglam <span className="text-base">→</span>
+              </button>
+            </div>
 
-      <div className="w-full aspect-[4/5] overflow-hidden bg-[#E5D5C6] rounded-sm shadow-sm">
-        <img
-          src="/ceo.jpeg"
-          alt="Fatima - Mainnasglam Beauty"
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="w-full aspect-[4/5] overflow-hidden bg-[#E5D5C6] rounded-sm shadow-sm">
+              <img
+                src="/ceo.jpeg"
+                alt="Fatima - Mainnasglam Beauty"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Services preview */}
       <section className="py-16 md:py-28 bg-[#F0E7DE]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-          {/* Section Heading */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4">
             <div>
               <p className="text-[#8C5228] text-[11px] sm:text-xs tracking-[0.2em] uppercase font-semibold mb-3">
