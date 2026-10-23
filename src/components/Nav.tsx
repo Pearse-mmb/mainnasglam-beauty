@@ -200,14 +200,15 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
               Follow Along
             </p>
 
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-[#1C1915] hover:text-[#8C5E3A] transition-colors"
-            >
-              Instagram ↗
-            </a>
+                    <a
+            href="https://www.instagram.com/mainnasglam_beauty/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-3.5 border border-[#FBF6F0]/60 text-[#FBF6F0] text-sm font-semibold tracking-wide hover:border-[#E0A96D] hover:text-[#E0A96D] transition-colors text-center"
+            style={{ borderRadius: 'var(--radius)' }}
+          >
+            Book via Instagram
+          </a>
           </div>
 
           <p className="mt-auto pt-10 text-xs tracking-wide text-[#1C1915]/50">

@@ -74,7 +74,7 @@ export default function Contact({ onNavigate }: ContactProps) {
                   <p className="text-[#9A928A] text-xs tracking-widest uppercase mb-4">Follow</p>
                   <div className="flex flex-col gap-4">
                     <a
-                      href="https://instagram.com"
+                      href="https://www.instagram.com/mainnasglam_beauty/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-[#1C1915] hover:text-[#8C5E3A] group"
@@ -86,7 +86,7 @@ export default function Contact({ onNavigate }: ContactProps) {
                       </div>
                     </a>
                     <a
-                      href="https://tiktok.com"
+                  href="https://www.tiktok.com/@mainnasglam_beauty"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-[#1C1915] hover:text-[#8C5E3A] group"

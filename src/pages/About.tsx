@@ -319,17 +319,18 @@ export default function About({ onNavigate }: AboutProps) {
           </div>
 
           <div className="flex gap-6">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-[#1C1915] border-b border-[#1C1915] pb-0.5 hover:text-[#8C5E3A] hover:border-[#8C5E3A] transition-colors"
-            >
-              Instagram →
-            </a>
+                  <a
+          href="https://www.instagram.com/mainnasglam_beauty/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto px-8 py-3.5 border border-[#FBF6F0]/60 text-[#FBF6F0] text-sm font-semibold tracking-wide hover:border-[#E0A96D] hover:text-[#E0A96D] transition-colors text-center"
+          style={{ borderRadius: 'var(--radius)' }}
+        >
+          Book via Instagram
+        </a>
 
             <a
-              href="https://tiktok.com"
+             href="https://www.tiktok.com/@mainnasglam_beauty"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-[#1C1915] border-b border-[#1C1915] pb-0.5 hover:text-[#8C5E3A] hover:border-[#8C5E3A] transition-colors"

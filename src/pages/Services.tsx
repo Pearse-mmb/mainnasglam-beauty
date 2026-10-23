@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { collection, onSnapshot } from 'firebase/firestore'
-import { db } from '../lib/firebase'
+
+import { useState } from 'react'
 
 type Page =
   | 'home'
@@ -35,12 +34,9 @@ type Service = {
 const WHATSAPP_NUMBER = '447311304224'
 
 // Replace these with Fatima's confirmed bank details if needed.
-
-
-const ACCOUNT_NUMBER = '33348140'
-const SORT_CODE = "04-06-05";
-const BANK_ADDRESS = "4th floor , The Featherstne building, 66 City Road, London, EC1Y 2AL";
-
+const BANK_NAME = 'CONFIRM BANK NAME'
+const ACCOUNT_NAME = 'CONFIRM ACCOUNT NAME'
+const ACCOUNT_NUMBER = 'CONFIRM ACCOUNT NUMBER'
 
 const services: Service[] = [
   // MAKEUP
@@ -322,85 +318,6 @@ function formatDate(date: string) {
   })
 }
 
-function DateCalendar({
-  selectedDate,
-  blockedDates,
-  onSelect,
-}: {
-  selectedDate: string
-  blockedDates: string[]
-  onSelect: (date: string) => void
-}) {
-  const [visibleMonth, setVisibleMonth] = useState(() => {
-    const today = new Date()
-    return new Date(today.getFullYear(), today.getMonth(), 1)
-  })
-
-  const today = getLocalDate()
-  const year = visibleMonth.getFullYear()
-  const month = visibleMonth.getMonth()
-  const monthName = visibleMonth.toLocaleDateString('en-GB', {
-    month: 'long',
-    year: 'numeric',
-  })
-  const firstWeekday = new Date(year, month, 1).getDay()
-  const daysInMonth = new Date(year, month + 1, 0).getDate()
-  const calendarDays: (string | null)[] = [
-    ...Array.from({ length: firstWeekday }, () => null),
-    ...Array.from({ length: daysInMonth }, (_, index) => {
-      return `${year}-${String(month + 1).padStart(2, '0')}-${String(index + 1).padStart(2, '0')}`
-    }),
-  ]
-  const currentYear = Number(today.slice(0, 4))
-  const currentMonth = Number(today.slice(5, 7)) - 1
-  const isPreviousMonthDisabled =
-    year < currentYear || (year === currentYear && month <= currentMonth)
-
-  return (
-    <div className="rounded-xl border border-[#D8C2AF] bg-white/80 p-4 shadow-sm sm:p-5">
-      <div className="mb-5 flex items-center justify-between gap-3">
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#8C5E3A]">Appointment calendar</p>
-          <h3 className="mt-1 font-display text-xl text-[#2B211B]">{monthName}</h3>
-        </div>
-        <div className="flex gap-2">
-          <button type="button" onClick={() => setVisibleMonth(new Date(year, month - 1, 1))} disabled={isPreviousMonthDisabled} aria-label="Previous month" className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D8D0C4] text-[#70452F] transition hover:bg-[#F5ECE4] disabled:cursor-not-allowed disabled:opacity-30">‹</button>
-          <button type="button" onClick={() => setVisibleMonth(new Date(year, month + 1, 1))} aria-label="Next month" className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D8D0C4] text-[#70452F] transition hover:bg-[#F5ECE4]">›</button>
-        </div>
-      </div>
-      <div className="mb-2 grid grid-cols-7 gap-1">
-        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-          <div key={day} className="py-2 text-center text-[10px] font-medium uppercase tracking-wide text-[#8C8178] sm:text-xs">{day}</div>
-        ))}
-      </div>
-      <div className="grid grid-cols-7 gap-1">
-        {calendarDays.map((date, index) => {
-          if (!date) return <div key={`empty-${index}`} className="aspect-square" />
-          const dayNumber = Number(date.slice(8, 10))
-          const isPast = date < today
-          const isBlocked = blockedDates.includes(date)
-          const isUnavailable = isPast || isBlocked
-          const isSelected = selectedDate === date
-          return (
-            <button key={date} type="button" disabled={isUnavailable} aria-label={`${dayNumber}${isBlocked ? ', unavailable' : ''}`} aria-pressed={isSelected} title={isBlocked ? 'This date is unavailable' : isPast ? 'Past dates cannot be selected' : 'Select this date'} onClick={() => onSelect(date)} className={[
-              'relative flex aspect-square min-w-0 items-center justify-center rounded-lg border text-xs transition-all duration-200 sm:text-sm',
-              isSelected ? 'border-[#70452F] bg-[#70452F] font-semibold text-white shadow-md' : isUnavailable ? 'cursor-not-allowed border-[#E5DFD9] bg-[#EDE9E5] text-[#AAA19A] line-through' : 'border-transparent bg-[#FAF8F4] text-[#4A4540] hover:border-[#B78A68] hover:bg-[#F5ECE4]',
-            ].join(' ')}>
-              {dayNumber}
-              {isBlocked && <span className="absolute bottom-1 h-1 w-1 rounded-full bg-[#B9AFA7]" />}
-            </button>
-          )
-        })}
-      </div>
-      <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-[#E8DFD6] pt-4">
-        <div className="flex items-center gap-2 text-xs text-[#71645B]"><span className="h-3 w-3 rounded-sm border border-[#D8D0C4] bg-[#FAF8F4]" />Available</div>
-        <div className="flex items-center gap-2 text-xs text-[#71645B]"><span className="h-3 w-3 rounded-sm border border-[#E5DFD9] bg-[#EDE9E5]" />Unavailable</div>
-        <div className="flex items-center gap-2 text-xs text-[#71645B]"><span className="h-3 w-3 rounded-sm bg-[#70452F]" />Selected</div>
-      </div>
-    </div>
-  )
-}
-
 function ServiceCard({
   service,
   onBook,
@@ -473,6 +390,8 @@ function ServiceCard({
 
 export default function Services({ onNavigate }: ServicesProps) {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
+  const [showBookingPolicy, setShowBookingPolicy] = useState(false)
+  const [policyAccepted, setPolicyAccepted] = useState(false)
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false)
   const [selectedOption, setSelectedOption] = useState('')
   const [extraLength, setExtraLength] = useState(false)
@@ -480,38 +399,11 @@ export default function Services({ onNavigate }: ServicesProps) {
 
   const [appointmentDate, setAppointmentDate] = useState('')
   const [appointmentTime, setAppointmentTime] = useState('')
-  const [blockedDates, setBlockedDates] = useState<string[]>([])
-  const [availabilityLoaded, setAvailabilityLoaded] = useState(false)
-  const [availabilityError, setAvailabilityError] = useState(false)
-  const [availabilityMessage, setAvailabilityMessage] = useState('')
-
-  useEffect(() => {
-    const unsubscribe = onSnapshot(
-      collection(db, 'blockedDates'),
-      (snapshot) => {
-        setBlockedDates(snapshot.docs.map((document) => document.id))
-        setAvailabilityLoaded(true)
-        setAvailabilityError(false)
-      },
-      (error) => {
-        console.error('Failed to load blocked dates:', error)
-        setAvailabilityError(true)
-        setAvailabilityLoaded(true)
-      }
-    )
-    return () => unsubscribe()
-  }, [])
-
-  useEffect(() => {
-    if (appointmentDate && blockedDates.includes(appointmentDate)) {
-      setAppointmentDate('')
-      setAppointmentTime('')
-      setAvailabilityMessage('That date is no longer available. Please choose another date.')
-    }
-  }, [blockedDates, appointmentDate])
   const [customerName, setCustomerName] = useState('')
   const [customerPhone, setCustomerPhone] = useState('')
   const [customerEmail, setCustomerEmail] = useState('')
+  const [learningGoals, setLearningGoals] = useState('')
+  const [groupSize, setGroupSize] = useState('')
   const [locationAddress, setLocationAddress] = useState('')
   const [eventType, setEventType] = useState('')
   const [eventVenue, setEventVenue] = useState('')
@@ -527,6 +419,16 @@ export default function Services({ onNavigate }: ServicesProps) {
   const isBridal = Boolean(selectedService?.consultation)
   const isOutcall = selectedService?.category === 'Outcall Makeup'
   const isLesson = selectedService?.category === 'Lessons'
+  const isGroupLesson = Boolean(selectedService?.title.includes('Group Makeup Workshop'))
+  const isEventMakeup = Boolean(selectedService && [
+    'Bridesmaids & Wedding Guest Glam',
+    'Photoshoot Makeup',
+    'Birthday Makeup & Photoshoot',
+    'Photoshoot Makeup + Touch-Up',
+    'Birthday Makeup & Photoshoot — Home Service',
+  ].includes(selectedService.title))
+  const needsEventDetails = isBridal || isEventMakeup
+  const needsTouchUpDetails = Boolean(selectedService?.title.includes('Touch-Up')) || isBridal
 
   const chosenPrice = selectedService
     ? selectedService.sizes
@@ -547,16 +449,19 @@ export default function Services({ onNavigate }: ServicesProps) {
 
   const openBooking = (service: Service) => {
     setSelectedService(service)
+    setShowBookingPolicy(false)
+    setPolicyAccepted(false)
     setShowPaymentInstructions(false)
     setSelectedOption(service.sizes?.[0]?.label ?? '')
     setExtraLength(false)
     setNeedHair(false)
     setAppointmentDate('')
     setAppointmentTime('')
-    setAvailabilityMessage('')
     setCustomerName('')
     setCustomerPhone('')
     setCustomerEmail('')
+    setLearningGoals('')
+    setGroupSize('')
     setLocationAddress('')
     setEventType('')
     setEventVenue('')
@@ -570,29 +475,25 @@ export default function Services({ onNavigate }: ServicesProps) {
 
   const closeBooking = () => {
     setSelectedService(null)
+    setShowBookingPolicy(false)
+    setPolicyAccepted(false)
     setShowPaymentInstructions(false)
   }
 
-  const continueToPayment = () => {
+  const continueToPolicy = () => {
     if (!selectedService || !appointmentDate || !appointmentTime) return
-
-    if (!availabilityLoaded || availabilityError) {
-      setAvailabilityMessage('We couldn’t verify availability. Please try again shortly.')
-      return
-    }
-
-    if (blockedDates.includes(appointmentDate) || appointmentDate < getLocalDate()) {
-      setAppointmentDate('')
-      setAppointmentTime('')
-      setAvailabilityMessage('That date is unavailable. Please choose another date.')
-      return
-    }
-
     if (!customerName.trim() || !customerPhone.trim()) return
-    if (isLesson && !customerEmail.trim()) return
+    if (isLesson && (!customerEmail.trim() || !learningGoals.trim())) return
+    if (isGroupLesson && !groupSize.trim()) return
     if (selectedService.sizes && !selectedOption) return
-    if (isBridal && (!eventType.trim() || !eventVenue.trim() || !readyTime)) return
+    if (needsEventDetails && (!eventType.trim() || !eventVenue.trim() || !readyTime)) return
     if (isOutcall && !locationAddress.trim()) return
+    setShowBookingPolicy(true)
+    setPolicyAccepted(false)
+  }
+
+  const continueToPayment = () => {
+    if (!policyAccepted) return
     setShowPaymentInstructions(true)
   }
 
@@ -626,13 +527,13 @@ Remaining balance: ${money(balance!)}`
       'PRICE',
       priceDetails,
       isOutcall ? 'Transport fee: Additional; please confirm before payment.' : '',
-      isBridal
+      needsEventDetails
         ? `Event type: ${eventType}
-Venue/location: ${eventVenue}
-Time I need to be ready: ${readyTime}
-Number of people needing makeup: ${peopleCount}
-Touch-up: ${touchUp}`
+Event/venue location: ${eventVenue}
+Time I need to be ready: ${readyTime}${isBridal || selectedService.title.includes('Bridesmaids') ? `\nNumber of people needing makeup: ${peopleCount}` : ''}${needsTouchUpDetails ? `\nTouch-up service: ${touchUp}` : ''}`
         : '',
+      isLesson ? `Learning goals: ${learningGoals.trim()}` : '',
+      isGroupLesson ? `Expected group size: ${groupSize.trim()}` : '',
       allergyNotes.trim() ? `Relevant allergy/skin notes: ${allergyNotes.trim()}` : '',
       `Photo/video consent for business promotion: ${photoConsent}`,
       `Special requests: ${specialRequests.trim() || 'None'}`,
@@ -756,7 +657,7 @@ Touch-up: ${touchUp}`
             {[
               {
                 q: 'What is the booking process?',
-                a: 'Choose a service, complete the booking form, read the booking instructions, transfer the confirmed amount to Fatima’s verified account, then continue to WhatsApp and attach your payment receipt. For quote-based services or transport fees, agree the final amount first.',
+                a: 'Choose a service, complete the booking form, read and accept the booking policy, review payment instructions, confirm the amount with Fatima where needed, then continue to WhatsApp. Attach your payment receipt if you have paid. Your appointment is not confirmed until Fatima confirms it.',
               },
               {
                 q: 'Are transport fees included?',
@@ -813,7 +714,7 @@ Touch-up: ${touchUp}`
               <div>
                 <p className="mb-2 text-xs uppercase tracking-widest text-[#8C5E3A]">Mainnasglam_Beauty</p>
                 <h2 id="booking-title" className="font-display text-2xl font-medium text-[#1C1915] sm:text-3xl">
-                  {isBridal ? 'Bridal consultation' : isHair ? 'Hair booking' : 'Book your appointment'}
+                  {isBridal ? 'Bridal consultation' : isEventMakeup ? 'Event makeup booking' : isHair ? 'Hair booking' : isLesson ? 'Makeup lesson enquiry' : 'Book your appointment'}
                 </h2>
                 <p className="mt-2 text-sm text-[#7A726A]">{selectedService.title}</p>
               </div>
@@ -827,7 +728,7 @@ Touch-up: ${touchUp}`
               </button>
             </div>
 
-            {!showPaymentInstructions ? (
+            {!showBookingPolicy ? (
               <>
             {selectedService.sizes && (
               <div className="mb-5">
@@ -868,46 +769,7 @@ Touch-up: ${touchUp}`
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label className="mb-2 block text-sm font-medium text-[#1C1915]">Preferred date *</label>
-                {!availabilityLoaded && (
-                  <div className="rounded-xl border border-[#D8D0C4] bg-white/70 p-5 text-sm text-[#7A726A]">
-                    <span className="inline-flex items-center gap-2">
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#D8D0C4] border-t-[#8C5E3A]" />
-                      Checking appointment availability...
-                    </span>
-                  </div>
-                )}
-                {availabilityLoaded && !availabilityError && (
-                  <DateCalendar
-                    selectedDate={appointmentDate}
-                    blockedDates={blockedDates}
-                    onSelect={(date) => {
-                      if (blockedDates.includes(date) || date < getLocalDate()) {
-                        setAvailabilityMessage('That date is unavailable. Please choose another date.')
-                        return
-                      }
-                      setAppointmentDate(date)
-                      setAppointmentTime('')
-                      setAvailabilityMessage('')
-                    }}
-                  />
-                )}
-                {appointmentDate && (
-                  <p className="mt-3 text-sm font-medium text-[#70452F]">Selected: {formatDate(appointmentDate)}</p>
-                )}
-                {availabilityError && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
-                    We couldn’t load appointment availability. Please refresh the page and try again.
-                  </div>
-                )}
-                {availabilityMessage && (
-                  <div role="status" aria-live="polite" className="mt-3 rounded-lg border border-[#D8C2AF] bg-[#F5ECE4] p-4">
-                    <p className="flex items-center gap-2 text-sm font-medium text-[#70452F]">
-                      <span aria-hidden="true">ⓘ</span>
-                      Date unavailable
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-[#71645B]">{availabilityMessage}</p>
-                  </div>
-                )}
+                <input type="date" min={getLocalDate()} value={appointmentDate} onChange={(event) => setAppointmentDate(event.target.value)} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
               </div>
               <div>
                 <label className="mb-2 block text-sm font-medium text-[#1C1915]">Preferred time *</label>
@@ -929,10 +791,23 @@ Touch-up: ${touchUp}`
               </div>
             </div>
 
-            {selectedService.category === 'Lessons' && (
-              <div className="mt-5">
-                <label className="mb-2 block text-sm font-medium text-[#1C1915]">Email address *</label>
-                <input type="email" value={customerEmail} onChange={(event) => setCustomerEmail(event.target.value)} placeholder="you@example.com" className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
+            {isLesson && (
+              <div className="mt-5 space-y-5">
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-[#1C1915]">Email address *</label>
+                  <input type="email" value={customerEmail} onChange={(event) => setCustomerEmail(event.target.value)} placeholder="you@example.com" className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-[#1C1915]">What would you like to learn? *</label>
+                  <textarea value={learningGoals} onChange={(event) => setLearningGoals(event.target.value)} placeholder="Tell Fatima what skills or techniques you want to focus on" rows={3} className="w-full resize-y border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
+                </div>
+                {isGroupLesson && <div>
+                  <label className="mb-2 block text-sm font-medium text-[#1C1915]">Expected group size *</label>
+                  <select value={groupSize} onChange={(event) => setGroupSize(event.target.value)} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]">
+                    <option value="">Select group size</option>
+                    {['2–5 people', '6–10 people', '11–15 people', '16+ people'].map((size) => <option key={size}>{size}</option>)}
+                  </select>
+                </div>}
               </div>
             )}
 
@@ -943,37 +818,37 @@ Touch-up: ${touchUp}`
               </div>
             )}
 
-            {isBridal && (
+            {needsEventDetails && (
               <div className="mt-6 border-t border-[#D8D0C4] pt-6">
-                <p className="mb-4 text-xs uppercase tracking-widest text-[#8C5E3A]">Event consultation</p>
+                <p className="mb-4 text-xs uppercase tracking-widest text-[#8C5E3A]">{isBridal ? 'Detailed bridal consultation' : 'Event / photoshoot details'}</p>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-[#1C1915]">Event type *</label>
-                    <input value={eventType} onChange={(event) => setEventType(event.target.value)} placeholder="Wedding, engagement..." className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
+                    <label className="mb-2 block text-sm font-medium text-[#1C1915]">{isBridal ? 'Event type *' : 'Event / shoot type *'}</label>
+                    <input value={eventType} onChange={(event) => setEventType(event.target.value)} placeholder={isBridal ? 'Wedding, engagement...' : 'Birthday, wedding, branding shoot...'} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-[#1C1915]">Venue/location *</label>
+                    <label className="mb-2 block text-sm font-medium text-[#1C1915]">{isOutcall ? 'Event venue / location *' : 'Venue or shoot location *'}</label>
                     <input value={eventVenue} onChange={(event) => setEventVenue(event.target.value)} placeholder="Venue or area" className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-medium text-[#1C1915]">Time you need to be ready *</label>
                     <input type="time" value={readyTime} onChange={(event) => setReadyTime(event.target.value)} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]" />
                   </div>
-                  <div>
+                  {(isBridal || selectedService.title.includes('Bridesmaids')) && <div>
                     <label className="mb-2 block text-sm font-medium text-[#1C1915]">People needing makeup</label>
                     <select value={peopleCount} onChange={(event) => setPeopleCount(event.target.value)} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]">
                       {['1', '2', '3', '4', '5', '6', '7', '8+'].map((count) => <option key={count}>{count}</option>)}
                     </select>
-                  </div>
+                  </div>}
                 </div>
-                <div className="mt-5">
+                {needsTouchUpDetails && <div className="mt-5">
                   <label className="mb-2 block text-sm font-medium text-[#1C1915]">Touch-up service?</label>
                   <select value={touchUp} onChange={(event) => setTouchUp(event.target.value)} className="w-full border border-[#D8D0C4] bg-white px-4 py-3 text-sm outline-none focus:border-[#8C5E3A]">
                     <option>No</option>
                     <option>Yes</option>
                     <option>Please discuss with Fatima</option>
                   </select>
-                </div>
+                </div>}
               </div>
             )}
 
@@ -1008,29 +883,125 @@ Touch-up: ${touchUp}`
               <button
                 type="button"
                 disabled={
-                  !availabilityLoaded ||
-                  availabilityError ||
                   !appointmentDate ||
                   !appointmentTime ||
                   !customerName.trim() ||
                   !customerPhone.trim() ||
-                  (isLesson && !customerEmail.trim()) ||
+                  (isLesson && (!customerEmail.trim() || !learningGoals.trim())) ||
+                  (isGroupLesson && !groupSize.trim()) ||
                   (Boolean(selectedService.sizes) && !selectedOption) ||
-                  (isBridal && (!eventType.trim() || !eventVenue.trim() || !readyTime)) ||
+                  (needsEventDetails && (!eventType.trim() || !eventVenue.trim() || !readyTime)) ||
                   (isOutcall && !locationAddress.trim())
                 }
-                onClick={continueToPayment}
+                onClick={continueToPolicy}
                 className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-[#6F4934] px-5 py-4 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-[#4A2D1E] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Read Booking Instructions →
+                Read Booking Policy →
               </button>
             </div>
               </>
-            ) : (
+            ) : !showPaymentInstructions ? (
               <div className="space-y-6">
                 <div className="rounded-xl border border-white/80 bg-white/55 p-5 shadow-sm backdrop-blur-xl sm:p-6">
                   <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#8C5E3A]">Step 2 of 3</p>
-                  <h3 className="font-display text-2xl text-[#2B211B]">Booking instructions</h3>
+                  <h3 className="font-display text-2xl text-[#2B211B]">Booking policy &amp; terms</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#71645B]">Kindly read the terms and conditions below before proceeding with your booking.</p>
+                </div>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Deposits</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>A 50% non-refundable deposit is required to secure an appointment.</li>
+                    <li>The deposit is deducted from the total service cost.</li>
+                    <li>The remaining balance must be paid by cash or bank transfer on the appointment day.</li>
+                  </ul>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">All appointments</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>Avoid scheduling other commitments close to your appointment, as the service may take longer than expected.</li>
+                    <li>No plus-ones are allowed, except a client under 10 years old attending with a parent or carer.</li>
+                    <li>Standard braiding extensions are included in the cost and standard length is waist length. Curly or customised extensions cost an additional £20, blow-drying costs £10, and curled ends cost £15.</li>
+                    <li>If you prefer to bring your own extensions, they must be pre-stretched and dropped off at Fatima’s address at least 24 hours before the appointment for preparation.</li>
+                  </ul>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Microblading &amp; lash extensions</h4>
+                  <p className="mb-3 text-sm leading-relaxed text-[#4A4540]">Fatima’s supplied policy says not to book these services if any of the following apply to you:</p>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>Pregnant or breastfeeding.</li>
+                    <li>History of severe keloids.</li>
+                    <li>Taking blood thinners.</li>
+                    <li>Uncontrolled diabetes.</li>
+                    <li>History of severe allergic reactions.</li>
+                    <li>Perfectly defined natural brows.</li>
+                    <li>Significant immune problems.</li>
+                    <li>Recently had Botox around the brows.</li>
+                    <li>Bleeding or clotting problems.</li>
+                  </ul>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Cancellations &amp; rescheduling</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>If you cancel, your 50% deposit will be forfeited.</li>
+                    <li>You may reschedule once, provided you give at least 48 hours’ notice before the appointment day.</li>
+                  </ul>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Lateness</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>Please arrive on time. A 10-minute grace period is allowed.</li>
+                    <li>11–20 minutes late: £15 late fee.</li>
+                    <li>21–30 minutes late: £30 late fee.</li>
+                    <li>More than 30 minutes late: the appointment is automatically cancelled and the deposit is forfeited. No rescheduling is allowed for that booking; a new booking requires a new deposit.</li>
+                  </ul>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Hair requirements</h4>
+                  <p className="mb-3 text-sm leading-relaxed text-[#4A4540]">For hair appointments, your hair must be:</p>
+                  <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>Freshly washed.</li>
+                    <li>Properly detangled.</li>
+                    <li>Blow-dried.</li>
+                    <li>Completely free of oils and products.</li>
+                    <li>At least 4 inches long. Hair shorter than 4 inches may result in cancellation; please confirm your hair length before booking.</li>
+                  </ol>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Face preparation</h4>
+                  <p className="text-sm leading-relaxed text-[#4A4540]">For microblading, lash appointments or makeup, arrive with a freshly washed face and no makeup or face lotion.</p>
+                </section>
+
+                <section className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 sm:p-6">
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#8C5E3A]">Photos &amp; social media</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
+                    <li>Photos or videos of clients’ work may be taken for promotion and social media. If you do not want to be featured, inform Fatima.</li>
+                    <li>Please tag or mention Mainnasglam_Beauty when sharing your look.</li>
+                  </ul>
+                </section>
+
+                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#8C5E3A]/40 bg-[#F5ECE4] p-4 text-sm leading-relaxed text-[#2B211B]">
+                  <input type="checkbox" checked={policyAccepted} onChange={(event) => setPolicyAccepted(event.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-[#8C5E3A]" />
+                  <span><strong>I have read and agree to the booking terms and conditions.</strong> I understand that continuing means I am agreeing to this policy.</span>
+                </label>
+
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <button type="button" onClick={() => { setShowBookingPolicy(false); setPolicyAccepted(false) }} className="border border-[#D8D0C4] px-5 py-3 text-sm text-[#1C1915] hover:border-[#8C5E3A]">← Back to booking form</button>
+                  <button type="button" disabled={!policyAccepted} onClick={continueToPayment} className="flex flex-1 items-center justify-center gap-2 bg-[#6F4934] px-5 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-[#4A2D1E] disabled:cursor-not-allowed disabled:opacity-40">Agree &amp; Continue to Payment →</button>
+                </div>
+                <p className="text-center text-xs leading-relaxed text-[#7A726A]">Your service is selected. Review any add-ons before continuing. Thank you, and see you soon x</p>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="rounded-xl border border-white/80 bg-white/55 p-5 shadow-sm backdrop-blur-xl sm:p-6">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#8C5E3A]">Step 3 of 3</p>
+                  <h3 className="font-display text-2xl text-[#2B211B]">Booking instructions &amp; payment</h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#71645B]">Please check your service, appointment date and selected options before making a transfer. Your booking is not confirmed until Fatima confirms it.</p>
                   <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
                     <li>Review the service and amount shown below.</li>
@@ -1040,39 +1011,24 @@ Touch-up: ${touchUp}`
                   </ol>
                 </div>
 
-{/*                     
-      <div className="flex flex-wrap justify-between gap-2 border-b border-[#E6DCD2] pb-3">
-        <span>Bank</span>
-        <strong className="text-right text-[#2B211B]">{BANK_NAME}</strong>
-      </div>
-
-<div className="flex flex-wrap justify-between gap-2 border-b border-[#E6DCD2] pb-3">
-  <span>Account name</span>
-  <strong className="text-right text-[#2B211B]">{ACCOUNT_NAME}</strong>
-</div> */}
-
-<div className="flex flex-wrap justify-between gap-2 border-b border-[#E6DCD2] pb-3">
-  <span>Account number</span>
-  <strong className="text-right text-[#2B211B]">{ACCOUNT_NUMBER}</strong>
-</div>
-
-<div className="flex flex-wrap justify-between gap-2 border-b border-[#E6DCD2] pb-3">
-  <span>Sort code</span>
-  <strong className="text-right text-[#2B211B]">{SORT_CODE}</strong>
-</div>
-
-<div className="flex flex-wrap justify-between gap-2 border-b border-[#E6DCD2] pb-3">
-  <span>Bank address</span>
-  <strong className="text-right text-[#2B211B]">{BANK_ADDRESS}</strong>
-</div>
-
+                <div className="rounded-xl border border-[#CBB8A7] bg-white/65 p-5 backdrop-blur-xl sm:p-6">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#8C5E3A]">Payment details</p>
+                  <div className="space-y-3 text-sm text-[#4A4540]">
+                    <div className="grid grid-cols-1 gap-1 border-b border-[#E6DCD2] pb-3 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-4"><span className="text-sm text-[#71645B]">Bank</span><strong className="min-w-0 break-words text-left text-sm leading-relaxed text-[#2B211B] [overflow-wrap:anywhere] sm:text-right">{BANK_NAME}</strong></div>
+                    <div className="grid grid-cols-1 gap-1 border-b border-[#E6DCD2] pb-3 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-4"><span className="text-sm text-[#71645B]">Account name</span><strong className="min-w-0 break-words text-left text-sm leading-relaxed text-[#2B211B] [overflow-wrap:anywhere] sm:text-right">{ACCOUNT_NAME}</strong></div>
+                    <div className="grid grid-cols-1 gap-1 border-b border-[#E6DCD2] pb-3 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-4"><span className="text-sm text-[#71645B]">Account number</span><strong className="min-w-0 break-words text-left text-sm leading-relaxed text-[#2B211B] [overflow-wrap:anywhere] sm:text-right">{ACCOUNT_NUMBER}</strong></div>
+                    <div className="flex flex-wrap justify-between gap-2 pt-1"><span>Service total</span><strong className="text-right text-[#2B211B]">{totalPrice === null ? 'Quote required' : money(totalPrice)}</strong></div>
+                    <div className="flex flex-wrap justify-between gap-2"><span>Suggested 50% deposit</span><strong className="text-right text-[#70452F]">{deposit === null ? 'Confirm with Fatima' : money(deposit)}</strong></div>
+                    {isOutcall && <p className="border-t border-[#E6DCD2] pt-3 text-xs leading-relaxed">Home-service transport is additional and is not included in this amount.</p>}
+                  </div>
+                </div>
 
                 <div className="rounded-lg border border-[#D8C2AF] bg-[#F5ECE4]/80 p-4 text-sm leading-relaxed text-[#4A4540]">
                   <strong className="text-[#2B211B]">Important:</strong> Replace the placeholder bank details in the code with Fatima’s verified account details before publishing. Never transfer to an account until the account name and amount have been confirmed. If the service says “Quote required”, contact Fatima first instead of guessing the payment amount.
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <button type="button" onClick={() => setShowPaymentInstructions(false)} className="border border-[#D8D0C4] px-5 py-3 text-sm text-[#1C1915] hover:border-[#8C5E3A]">← Back to booking</button>
+                  <button type="button" onClick={() => setShowPaymentInstructions(false)} className="border border-[#D8D0C4] px-5 py-3 text-sm text-[#1C1915] hover:border-[#8C5E3A]">← Back to policy</button>
                   <button type="button" onClick={sendBooking} className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-[#6F4934] px-5 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-[#4A2D1E]">{totalPrice === null ? 'Confirm Quote on WhatsApp ↗' : 'I’ve Paid — Continue to WhatsApp ↗'}</button>
                 </div>
                 <p className="text-center text-xs leading-relaxed text-[#7A726A]">WhatsApp will open with your booking details. Attach your payment receipt in the chat before sending. The website cannot verify payment automatically.</p>
