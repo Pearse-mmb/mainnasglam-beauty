@@ -23,47 +23,50 @@ export default function Home({ onNavigate }: HomeProps) {
           className="absolute inset-0 w-full h-full object-cover object-center md:object-[center_30%] transition-transform duration-700"
         />
 
-        {/* Dark espresso overlay for improved mobile readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#170F0C] via-[#170F0C]/85 to-[#170F0C]/50" />
+        {/* Keep the original background picture */}
+        <div className="absolute inset-0 bg-black/10" />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full z-10">
-          <p className="text-[#C7B5A5] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-4 font-semibold">
-            Beauty & Self-Care · Glasgow, United Kingdom
-          </p>
+          {/* Light, translucent text backing for mobile readability */}
+          <div className="max-w-3xl rounded-md bg-[#FBF6F0]/80 backdrop-blur-[2px] p-4 sm:p-6 md:bg-transparent md:backdrop-blur-none md:p-0">
+            <p className="text-[#51382B] md:text-[#C7B5A5] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-4 font-semibold">
+              Beauty & Self-Care · Glasgow, United Kingdom
+            </p>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-normal tracking-[-0.035em] text-[#E8D8C8] leading-[1.1] mb-6 max-w-4xl">
-            Where Beauty <br />
-            <em className="text-[#B89A83] not-italic font-serif">
-              Meets Confidence
-            </em>
-          </h1>
+            <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-normal tracking-[-0.035em] text-[#211713] md:text-[#E8D8C8] leading-[1.1] mb-6 max-w-4xl">
+              Where Beauty <br />
+              <em className="text-[#51382B] md:text-[#B89A83] not-italic font-serif">
+                Meets Confidence
+              </em>
+            </h1>
 
-          <p className="text-[#D0C0B2] text-sm sm:text-base leading-relaxed max-w-2xl mb-8 font-normal">
-            Makeup · Microblading · Lashes · Braids · Waxing
-            <br className="hidden sm:block" />
-            <span className="block sm:inline mt-1 sm:mt-0">
-              {" "}Your beauty, your style, your confidence — all in one place.
-            </span>
-          </p>
+            <p className="text-[#3D3029] md:text-[#D0C0B2] text-sm sm:text-base leading-relaxed max-w-2xl mb-8 font-normal">
+              Makeup · Microblading · Lashes · Braids · Waxing
+              <br className="hidden sm:block" />
+              <span className="block sm:inline mt-1 sm:mt-0">
+                {" "}Your beauty, your style, your confidence — all in one place.
+              </span>
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto">
-            <button
-              onClick={() => go('portfolio')}
-              className="w-full sm:w-auto px-8 py-3.5 bg-[#E8D8C8] text-[#211713] text-sm font-semibold tracking-wide hover:bg-[#B89A83] transition-colors text-center"
-              style={{ borderRadius: 'var(--radius)' }}
-            >
-              Explore our services
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto">
+              <button
+                onClick={() => go('portfolio')}
+                className="w-full sm:w-auto px-8 py-3.5 bg-[#E8D8C8] text-[#211713] text-sm font-semibold tracking-wide hover:bg-[#B89A83] transition-colors text-center"
+                style={{ borderRadius: 'var(--radius)' }}
+              >
+                Explore our services
+              </button>
 
-            <a
-              href={INSTAGRAM_DM}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-3.5 border border-[#C7B5A5]/70 text-[#E8D8C8] text-sm font-semibold tracking-wide hover:border-[#B89A83] hover:text-[#B89A83] transition-colors text-center"
-              style={{ borderRadius: 'var(--radius)' }}
-            >
-              Book via Instagram
-            </a>
+              <a
+                href={INSTAGRAM_DM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-3.5 border border-[#8C5E3A] text-[#211713] md:border-[#C7B5A5]/70 md:text-[#E8D8C8] text-sm font-semibold tracking-wide hover:border-[#B89A83] hover:text-[#8C5E3A] md:hover:text-[#B89A83] transition-colors text-center"
+                style={{ borderRadius: 'var(--radius)' }}
+              >
+                Book via Instagram
+              </a>
+            </div>
           </div>
         </div>
       </section>
