@@ -30,9 +30,9 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full z-10">
           <div className="max-w-4xl">
             {/* High contrast uppercase tag with text shadow */}
-            <p className="text-[#F3C287] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-3 font-extrabold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+            {/* <p className="text-[#F3C287] text-[11px] sm:text-xs tracking-[0.2em] uppercase mb-3 font-extrabold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
               Beauty & Self-Care · Glasgow, United Kingdom
-            </p>
+            </p> */}
 
             {/* Bold white heading with shadow for crisp mobile viewing */}
             <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-normal tracking-[-0.035em] text-[#FFFFFF] leading-[1.1] mb-5 drop-shadow-[0_3px_6px_rgba(0,0,0,0.9)]">
@@ -43,11 +43,11 @@ export default function Home({ onNavigate }: HomeProps) {
             </h1>
 
             <p className="text-[#FFFFFF] text-sm sm:text-base leading-relaxed max-w-2xl mb-8 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-              Makeup · Microblading · Lashes · Braids · Waxing
+              Makeup · Microblading · Lashes · Braids · 
               <br className="hidden sm:block" />
-              <span className="block sm:inline mt-1 sm:mt-0">
+              {/* <span className="block sm:inline mt-1 sm:mt-0">
                 {" "}Your beauty, your style, your confidence — all in one place.
-              </span>
+              </span> */}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto">
@@ -74,48 +74,44 @@ export default function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* Intro statement */}
-      <section className="py-16 md:py-28 bg-[#FBF6F0]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
-              <p className="text-[#6E3812] text-[11px] sm:text-xs tracking-[0.2em] uppercase font-extrabold mb-3">
-                Mainnasglam Beauty
-              </p>
+    <section className="py-16 sm:py-20 md:py-28 bg-[#FBF6F0]">
+  <div className="max-w-4xl mx-auto px-5 sm:px-8">
+    <div className="flex flex-col items-center text-center">
+      <p className="text-[#6E3812] text-[11px] sm:text-xs tracking-[0.2em] uppercase font-extrabold mb-4">
+        Mainnasglam Beauty
+      </p>
 
-              <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-[-0.035em] text-[#1F1714] leading-tight mb-5">
-                Hey Queens and Kings, <br className="hidden sm:block" />
-                <em className="text-[#6E3812] not-italic font-serif">
-                  it’s lovely to have you here.
-                </em>
-              </h2>
+      <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-[-0.035em] text-[#1F1714] leading-tight mb-6 max-w-3xl">
+        Hey Queens and Kings,
+        <br />
+        <em className="text-[#6E3812] not-italic font-serif">
+          it’s lovely to have you here.
+        </em>
+      </h2>
 
-              <p className="text-[#3D3029] text-sm sm:text-base leading-relaxed mb-4 font-normal">
-                I’m Fatima, a home-based beauty service provider in Glasgow. Our services include Makeup, Microblading, Lash Extensions, and Braids.
-              </p>
+      <div className="max-w-2xl">
+        <p className="text-[#3D3029] text-sm sm:text-base leading-7 mb-5 font-normal">
+          I’m Fatima, a home-based beauty service provider in Glasgow. Our
+          services include Makeup, Microblading, Lash Extensions, and Braids.
+        </p>
 
-              <p className="text-[#3D3029] text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                I aim to slay you to perfection. You can rest assured to have a personalized, well-pampered, and comfortable session with me — and I just can’t wait to have you!
-              </p>
+        <p className="text-[#3D3029] text-sm sm:text-base leading-7 mb-8 font-normal">
+          I aim to slay you to perfection. You can rest assured to have a
+          personalized, well-pampered, and comfortable session with me — and I
+          just can’t wait to have you!
+        </p>
+      </div>
 
-              <button
-                onClick={() => go('about')}
-                className="text-sm font-bold text-[#1F1714] border-b-2 border-[#6E3812] pb-0.5 hover:text-[#6E3812] transition-colors inline-flex items-center gap-1.5"
-              >
-                About Mainnasglam <span className="text-base text-[#6E3812]">→</span>
-              </button>
-            </div>
-
-            <div className="w-full aspect-[4/5] overflow-hidden bg-[#E5D5C6] rounded-sm shadow-md">
-              <img
-                src="/ceo.jpeg"
-                alt="Fatima - Mainnasglam Beauty"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <button
+        onClick={() => go('about')}
+        className="text-sm font-bold text-[#1F1714] border-b-2 border-[#6E3812] pb-1 hover:text-[#6E3812] transition-colors inline-flex items-center gap-2"
+      >
+        About Mainnasglam
+        <span className="text-base text-[#6E3812]">→</span>
+      </button>
+    </div>
+  </div>
+</section>
       {/* Services preview */}
       <section className="py-16 md:py-28 bg-[#F0E7DE]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
@@ -131,7 +127,7 @@ export default function Home({ onNavigate }: HomeProps) {
 
               <p className="text-[#4A3B32] text-sm mt-3 max-w-lg leading-relaxed">
                 Discover our signature categories: makeup, microblading,
-                lashes, braids, and waxing.
+                lashes, braids.
               </p>
             </div>
 
@@ -149,7 +145,7 @@ export default function Home({ onNavigate }: HomeProps) {
               {
                 title: 'Makeup',
                 desc: 'Soft glam, full glam, birthday, prom, graduation and photoshoot looks.',
-                img: '/makeupa.jpeg',
+                img: '/ceo.jpeg',
                 alt: 'Makeup artistry',
               },
               {

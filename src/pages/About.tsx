@@ -29,8 +29,8 @@ export default function About({ onNavigate }: AboutProps) {
       content: [
         'Kindly avoid booking other commitments close to your appointment time, as services may take longer in certain circumstances.',
         'No plus-ones are allowed, except for a client under 10 who must attend with their parent or carer.',
-        'All braiding extensions are included in the cost (standard length: waist length). Curly/customised extensions cost £20, blow-drying costs £10, and curled ends cost £15. If you wish to bring your own extensions, they must be pre-stretched and dropped off at my address at least 24 hours before your appointment for preparation.',
-        'For microblading and lash extensions, please do not book if you are pregnant, breastfeeding, taking blood thinners, have a history of severe keloids, uncontrolled diabetes, severe allergic reactions, significant immune problems, or bleeding/clotting problems. Please also avoid booking if you have recently had Botox around the brows. The client also lists naturally well-defined brows as a reason not to book for microblading.',
+        'All braiding extensions are included in the cost except Curly/customised extensions cost £20, blow-drying costs £10, and curled ends cost £15. If you wish to bring your own extensions, they must be pre-stretched and dropped off at my address at least 24 hours before your appointment for preparation.',
+        'For microblading and lash extensions, please do not boonjmjpkk if you are pregnant, breastfeeding, taking blood thinners, have a history of severe keloids, uncontrolled diabetes, severe allergic reactions, significant immune problems, or bleeding/clotting problems. Please also avoid booking if you have recently had Botox around the brows. The client also lists naturally well-defined brows as a reason not to book for microblading.',
       ],
     },
     {
@@ -44,9 +44,7 @@ export default function About({ onNavigate }: AboutProps) {
       title: 'Lateness',
       content: [
         'Please ensure you arrive on time. A 10-minute grace period is allowed.',
-        '11–20 minutes late: £15 fee.',
-        '21–30 minutes late: £30 fee.',
-        'More than 30 minutes late: your appointment will automatically be cancelled, and you will lose your deposit with no option to reschedule. You can make a fresh booking by paying a new deposit.',
+       
       ],
     },
     {

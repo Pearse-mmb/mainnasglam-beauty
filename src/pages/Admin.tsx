@@ -331,7 +331,7 @@ export default function Admin({ onBack }: AdminProps) {
                         ? "bg-[#8C5E3A] text-white border-[#8C5E3A]"
                         : "bg-white border-gray-200 hover:border-[#8C5E3A] hover:bg-[#FAF8F4]"
                     }
-                    ${isPast ? "opacity-30 cursor-not-allowed" : ""}
+                  ${isPast && !isBlocked ? "opacity-30 cursor-not-allowed" : ""}
                     ${saving === id ? "opacity-50" : ""}
                   `}
                 >

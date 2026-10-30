@@ -47,7 +47,7 @@ const sessionTypes = [
   { id: 'ombre-brows', label: 'Ombré Brows', category: 'Brows', price: '£100' },
   { id: 'combination-brows', label: 'Combination Brows', category: 'Brows', price: '£150' },
   { id: 'braids', label: 'Braids & Cornrows', category: 'Hair', price: 'Enquire' },
-  { id: 'waxing', label: 'Waxing', category: 'Self-Care', price: 'Enquire' },
+
   { id: 'training', label: 'Beauty Training', category: 'Training', price: 'Enquire' },
   { id: 'other', label: 'Other Beauty Enquiry', category: 'Other', price: 'Enquire' },
 ]

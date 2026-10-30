@@ -24,7 +24,6 @@ type Category =
 
 type Service = {
   title: string
-  desc: string
   price: number | null
   category: Category
   sizes?: { label: string; price: number }[]
@@ -42,56 +41,47 @@ const services: Service[] = [
   // MAKEUP
   {
     title: 'Soft / Full Glam',
-    desc: 'A flawless glam look tailored to your skin tone and occasion.',
     price: 70,
     category: 'In-Call Makeup',
   },
   {
     title: 'Bridesmaids & Wedding Guest Glam',
-    desc: 'Elegant, long-wearing makeup for weddings and special occasions.',
     price: 100,
     category: 'In-Call Makeup',
   },
   {
     title: 'Photoshoot Makeup',
-    desc: 'Camera-ready makeup for personal branding and creative shoots.',
     price: 100,
     category: 'In-Call Makeup',
   },
   {
     title: 'Birthday Makeup & Photoshoot',
-    desc: 'A glam look for your birthday or special celebration.',
     price: 100,
     category: 'In-Call Makeup',
   },
   {
     title: 'Soft / Full Glam — Home Service',
-    desc: 'Professional makeup at your home or chosen venue.',
     price: 150,
     category: 'Outcall Makeup',
   },
   {
     title: 'Photoshoot Makeup + Touch-Up',
-    desc: 'Camera-ready makeup at your location with touch-up included.',
     price: 150,
     category: 'Outcall Makeup',
   },
   {
     title: 'Bridal Makeup',
-    desc: 'Long-lasting bridal makeup. Event details are required before booking.',
     price: 200,
     category: 'Outcall Makeup',
     consultation: true,
   },
   {
     title: 'Birthday Makeup & Photoshoot — Home Service',
-    desc: 'Glam makeup at your location for your birthday and photos.',
     price: 150,
     category: 'Outcall Makeup',
   },
   {
     title: 'Bridal Makeup + Touch-Up',
-    desc: 'Bridal makeup at your location plus touch-up service.',
     price: 250,
     category: 'Outcall Makeup',
     consultation: true,
@@ -100,19 +90,16 @@ const services: Service[] = [
   // LESSONS
   {
     title: 'One-on-One Makeup Lesson',
-    desc: 'A personalised lesson covering products, tools and techniques.',
     price: null,
     category: 'Lessons',
   },
   {
     title: 'Group Makeup Workshop — Half Day',
-    desc: 'A hands-on group workshop covering makeup techniques.',
     price: null,
     category: 'Lessons',
   },
   {
     title: 'Group Makeup Workshop — Full Day',
-    desc: 'An in-depth workshop covering preparation, base, eyes and finishing.',
     price: null,
     category: 'Lessons',
   },
@@ -120,13 +107,11 @@ const services: Service[] = [
   // BROWS
   {
     title: 'Ombré Brows',
-    desc: 'Soft, shaded brows with a graduated finish.',
     price: 100,
     category: 'Brows',
   },
   {
     title: 'Combination Brows',
-    desc: 'A combination brow service tailored to your desired look.',
     price: 150,
     category: 'Brows',
   },
@@ -134,25 +119,21 @@ const services: Service[] = [
   // LASHES
   {
     title: 'Classic Lash Set',
-    desc: 'A classic lash look for everyday definition.',
     price: 50,
     category: 'Lashes',
   },
   {
     title: 'Hybrid Lash Set',
-    desc: 'A blend of classic and volume lash styling.',
     price: 50,
     category: 'Lashes',
   },
   {
     title: 'Volume Lash Set',
-    desc: 'A fuller lash look with added volume.',
     price: 80,
     category: 'Lashes',
   },
   {
     title: 'Cluster Lash Set',
-    desc: 'A cluster lash set for a defined finish.',
     price: 40,
     category: 'Lashes',
   },
@@ -160,7 +141,6 @@ const services: Service[] = [
   // BRAIDS AND CORNROWS
   {
     title: 'Natural Stitch Cornrows',
-    desc: 'Natural stitch cornrows. Braiding hair is not included.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -170,7 +150,6 @@ const services: Service[] = [
   },
   {
     title: 'Feed-in Stitch Cornrows',
-    desc: 'Feed-in stitch cornrows. Braiding hair is not included.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -180,7 +159,6 @@ const services: Service[] = [
   },
   {
     title: 'Cornrows',
-    desc: 'Choose your preferred cornrow size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -190,7 +168,6 @@ const services: Service[] = [
   },
   {
     title: 'Knotless Braids',
-    desc: 'Knotless braids in your preferred size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -201,7 +178,6 @@ const services: Service[] = [
   },
   {
     title: 'Box Braids',
-    desc: 'Box braids in your preferred size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -212,7 +188,6 @@ const services: Service[] = [
   },
   {
     title: 'Goddess / Boho Braids',
-    desc: 'Goddess or boho braids in your preferred size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -223,7 +198,6 @@ const services: Service[] = [
   },
   {
     title: 'Fulani Braids',
-    desc: 'Fulani braids in your preferred size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -234,7 +208,6 @@ const services: Service[] = [
   },
   {
     title: 'Freestyle Feed-in Cornrows',
-    desc: 'Choose lemonade braids or another cornrow style.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -244,7 +217,6 @@ const services: Service[] = [
   },
   {
     title: 'Feed-in Twists',
-    desc: 'Feed-in twists in your preferred size.',
     price: null,
     category: 'Braids',
     sizes: [
@@ -257,37 +229,31 @@ const services: Service[] = [
   // MEN'S HAIRSTYLES — EXTENSIONS INCLUDED
   {
     title: "Men's Natural Cornrows",
-    desc: 'Extensions included.',
     price: 40,
     category: "Men's Hairstyles",
   },
   {
     title: "Men's Feed-in Cornrows",
-    desc: 'Extensions included.',
     price: 50,
     category: "Men's Hairstyles",
   },
   {
     title: "Men's Feed-in Twists",
-    desc: 'Extensions included.',
     price: 65,
     category: "Men's Hairstyles",
   },
   {
     title: "Men's Natural Twists",
-    desc: 'Extensions included.',
     price: 60,
     category: "Men's Hairstyles",
   },
   {
     title: "Men's Feed-in Singles",
-    desc: 'Extensions included.',
     price: 50,
     category: "Men's Hairstyles",
   },
   {
     title: "Men's Natural Singles",
-    desc: 'Extensions included.',
     price: 40,
     category: "Men's Hairstyles",
   },
@@ -360,8 +326,6 @@ function ServiceCard({
         <h3 className="mb-3 font-display text-xl font-medium leading-snug text-[#2B211B]">
           {service.title}
         </h3>
-
-        <p className="text-sm leading-relaxed text-[#71645B]">{service.desc}</p>
 
         {service.category === 'Outcall Makeup' && (
           <p className="mt-4 text-xs leading-relaxed text-[#8C5E3A]">
@@ -550,53 +514,45 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
   const sections: {
     title: string
     eyebrow: string
-    description: string
     category: Category
     alternate?: boolean
   }[] = [
     {
       title: 'In-Call Makeup',
       eyebrow: 'At My Studio',
-      description: 'You come to me for your appointment in Glasgow.',
       category: 'In-Call Makeup',
     },
     {
       title: 'Outcall / Home Service',
       eyebrow: 'I Come to You',
-      description: 'Professional makeup at your home or chosen venue.',
       category: 'Outcall Makeup',
       alternate: true,
     },
     {
       title: 'Brows',
       eyebrow: 'Define Your Look',
-      description: 'Brow services tailored to your preferred finish.',
       category: 'Brows',
     },
     {
       title: 'Lashes',
       eyebrow: 'Lash Services',
-      description: 'Choose the lash set that suits your look.',
       category: 'Lashes',
       alternate: true,
     },
     {
       title: 'Braids, Cornrows & Twists',
       eyebrow: 'Hair Styling',
-      description: 'Standard length is mid-back. Braiding prices exclude extensions.',
       category: 'Braids',
     },
     {
       title: "Men's Hairstyles",
       eyebrow: 'Men’s Section',
-      description: 'Extensions are included in these listed prices.',
       category: "Men's Hairstyles",
       alternate: true,
     },
     {
       title: 'Makeup Lessons',
       eyebrow: 'Education',
-      description: 'Private lessons and group workshops. Contact Fatima for a quote.',
       category: 'Lessons',
     },
   ]
@@ -630,7 +586,6 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
               <div className="mb-10">
                 <p className="mb-2 text-xs uppercase tracking-widest text-[#8C5E3A]">{section.eyebrow}</p>
                 <h2 className="font-display text-3xl font-medium text-[#1C1915] md:text-4xl">{section.title}</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#7A726A]">{section.description}</p>
               </div>
 
               {section.category === 'Outcall Makeup' && (
