@@ -9,6 +9,7 @@ const INSTAGRAM_URL = 'https://www.instagram.com/mainnasglam_beauty/'
 const INSTAGRAM_BACKUP_URL = 'https://www.instagram.com/mainnasglam_beauty_/'
 const TIKTOK_URL = 'https://www.tiktok.com/@mainnasglam_beauty'
 const FACEBOOK_URL = 'https://www.facebook.com/search/top?q=Kwalliya%20signature'
+const OFFICIAL_EMAIL = 'Info@mainnasglamltd.com'
 
 const InstagramIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -45,7 +46,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </button>
 
             <p className="text-[#9A928A] text-sm leading-relaxed max-w-xs">
-              Professional makeup artist based in Glasgow, Scotland. Glam, Bridal, Birthday, Photoshoot and Lash transformations.
+              Professional makeup artist based in Glasgow, Scotland.  Bridal Make-up , Casual Make-up , Lashes ,Micro-Blading,  Hair services , Phone Photoshoot .
             </p>
 
             <div className="flex gap-4 mt-6">
@@ -108,6 +109,12 @@ export default function Footer({ onNavigate }: FooterProps) {
 
             <div className="flex flex-col gap-3 text-sm text-[#9A928A]">
               <span>Glasgow, United Kingdom</span>
+              <a
+  href={`mailto:${OFFICIAL_EMAIL}`}
+  className="text-[#9A928A] hover:text-[#C8956C] transition-colors"
+>
+  {OFFICIAL_EMAIL}
+</a>
 
               <button
                 onClick={() => go('contact')}

@@ -1,4 +1,91 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useState } from 'react'
 
 type Page =
@@ -50,22 +137,22 @@ const services: Service[] = [
     category: 'In-Call Makeup',
   },
   {
-    title: 'Photoshoot Makeup',
-    price: 100,
+    title: 'Phone Photoshoot',
+    price: 20,
     category: 'In-Call Makeup',
   },
   {
-    title: 'Birthday Makeup & Photoshoot',
-    price: 100,
+    title: 'Birthday Makeup/ Graduation',
+    price: 130,
     category: 'In-Call Makeup',
   },
   {
     title: 'Soft / Full Glam — Home Service',
-    price: 150,
+    price: 130,
     category: 'Outcall Makeup',
   },
   {
-    title: 'Photoshoot Makeup + Touch-Up',
+    title: 'Photoshoot Makeup ',
     price: 150,
     category: 'Outcall Makeup',
   },
@@ -76,30 +163,44 @@ const services: Service[] = [
     consultation: true,
   },
   {
-    title: 'Birthday Makeup & Photoshoot — Home Service',
+    title: 'Birthday/ Graduation Make up',
     price: 150,
     category: 'Outcall Makeup',
   },
   {
-    title: 'Bridal Makeup + Touch-Up',
+    title: 'Bridal Makeup ',
     price: 250,
-    category: 'Outcall Makeup',
+    category: 'Outcall Makeup', 
     consultation: true,
   },
 
+  {
+    title: 'Touch-Up (per 30 minutes)',
+    price: 50 ,
+    category: 'Outcall Makeup', 
+    consultation: true,
+  },
+
+
+
   // LESSONS
   {
-    title: 'One-on-One Makeup Lesson',
+    title: 'self  Makeup Lesson',
     price: null,
     category: 'Lessons',
   },
   {
-    title: 'Group Makeup Workshop — Half Day',
+    title: 'Beginner make up ',
     price: null,
     category: 'Lessons',
   },
   {
-    title: 'Group Makeup Workshop — Full Day',
+    title: 'Group Makeup training ',
+    price: null,
+    category: 'Lessons',
+  },
+  {
+    title: 'One on One Braiding Training Session',
     price: null,
     category: 'Lessons',
   },
@@ -138,125 +239,23 @@ const services: Service[] = [
     category: 'Lashes',
   },
 
-  // BRAIDS AND CORNROWS
-  {
-    title: 'Natural Stitch Cornrows',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: '4–6 stitches', price: 30 },
-      { label: '7–12 stitches', price: 50 },
-    ],
-  },
-  {
-    title: 'Feed-in Stitch Cornrows',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: '4–6 stitches', price: 60 },
-      { label: '7–12 stitches', price: 80 },
-    ],
-  },
-  {
-    title: 'Cornrows',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Large', price: 30 },
-      { label: 'Medium', price: 50 },
-    ],
-  },
-  {
-    title: 'Knotless Braids',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Jumbo', price: 100 },
-      { label: 'Medium', price: 120 },
-      { label: 'Small', price: 150 },
-    ],
-  },
-  {
-    title: 'Box Braids',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Jumbo', price: 100 },
-      { label: 'Medium', price: 120 },
-      { label: 'Small', price: 150 },
-    ],
-  },
-  {
-    title: 'Goddess / Boho Braids',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Jumbo', price: 120 },
-      { label: 'Medium', price: 150 },
-      { label: 'Small', price: 200 },
-    ],
-  },
-  {
-    title: 'Fulani Braids',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Large', price: 100 },
-      { label: 'Medium', price: 130 },
-      { label: 'Small', price: 160 },
-    ],
-  },
-  {
-    title: 'Freestyle Feed-in Cornrows',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Lemonade braids', price: 180 },
-      { label: 'Other cornrow styles', price: 100 },
-    ],
-  },
-  {
-    title: 'Feed-in Twists',
-    price: null,
-    category: 'Braids',
-    sizes: [
-      { label: 'Jumbo', price: 80 },
-      { label: 'Medium', price: 100 },
-      { label: 'Small', price: 150 },
-    ],
-  },
+  // HAIR STYLING — prices are shown as Enquire unless confirmed.
+  { title: 'Medium Knotless Braids', price: null, category: 'Braids' },
+  { title: 'Large Knotless Braid', price: 100, category: 'Braids' },
+  { title: 'Smedium Knotless Braids', price: null, category: 'Braids' },
+  { title: 'Boho Braids', price: null, category: 'Braids' },
+  { title: 'Fulani Braids', price: null, category: 'Braids' },
+  { title: 'Boho French Curls', price: null, category: 'Braids' },
+  { title: 'Crochet', price: null, category: 'Braids' },
+  { title: 'Cornrows', price: null, category: 'Braids' },
+  { title: 'Jayda Wayda Braids', price: null, category: 'Braids' },
+  { title: 'Kinky Twist', price: null, category: 'Braids' },
+  { title: 'Miracle Knots', price: null, category: 'Braids' },
+  { title: 'Gel Ponytail', price: 60, category: 'Braids' },
 
-  // MEN'S HAIRSTYLES — EXTENSIONS INCLUDED
-  {
-    title: "Men's Natural Cornrows",
-    price: 40,
-    category: "Men's Hairstyles",
-  },
-  {
-    title: "Men's Feed-in Cornrows",
-    price: 50,
-    category: "Men's Hairstyles",
-  },
-  {
-    title: "Men's Feed-in Twists",
-    price: 65,
-    category: "Men's Hairstyles",
-  },
-  {
-    title: "Men's Natural Twists",
-    price: 60,
-    category: "Men's Hairstyles",
-  },
-  {
-    title: "Men's Feed-in Singles",
-    price: 50,
-    category: "Men's Hairstyles",
-  },
-  {
-    title: "Men's Natural Singles",
-    price: 40,
-    category: "Men's Hairstyles",
-  },
+  // MEN'S HAIRSTYLES
+  { title: 'Men Hairstyle', price: null, category: "Men's Hairstyles" },
+
 ]
 
 const money = (amount: number) =>
@@ -308,18 +307,16 @@ function ServiceCard({
               ? 'I come to you'
               : service.category === 'Lessons'
                 ? 'Education'
-                : service.category === 'Braids'
-                  ? 'Standard length: mid-back'
-                  : service.category === "Men's Hairstyles"
-                    ? 'Extensions included'
-                    : 'Beauty service'}
+                : service.category === 'Braids' || service.category === "Men's Hairstyles"
+                  ? 'Hair styling'
+                  : 'Beauty service'}
         </p>
 
         <p className="mb-3 font-display text-3xl font-medium text-[#70452F]">
           {startingPrice === null
             ? 'Enquire'
             : service.sizes
-              ? `From ${money(startingPrice)}`
+              ? ` ${money(startingPrice)}`
               : money(startingPrice)}
         </p>
 
@@ -333,11 +330,6 @@ function ServiceCard({
           </p>
         )}
 
-        {service.category === 'Braids' && (
-          <p className="mt-4 text-xs leading-relaxed text-[#8C5E3A]">
-            Prices exclude extensions. Extra length and braiding hair are optional add-ons.
-          </p>
-        )}
       </div>
 
       <button
@@ -359,7 +351,9 @@ export default function Services({ onNavigate }: ServicesProps) {
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false)
   const [selectedOption, setSelectedOption] = useState('')
   const [extraLength, setExtraLength] = useState(false)
-  const [needHair, setNeedHair] = useState(false)
+  const [blowDry, setBlowDry] = useState(false)
+  const [curlyEnds, setCurlyEnds] = useState(false)
+  const [customExtensions, setCustomExtensions] = useState(false)
 
   const [appointmentDate, setAppointmentDate] = useState('')
   const [appointmentTime, setAppointmentTime] = useState('')
@@ -379,7 +373,7 @@ export default function Services({ onNavigate }: ServicesProps) {
   const [specialRequests, setSpecialRequests] = useState('')
 
   // Each service type can show the questions needed for that booking process.
-  const isHair = selectedService?.category === 'Braids'
+  const isHair = selectedService?.category === 'Braids' || selectedService?.category === "Men's Hairstyles"
   const isBridal = Boolean(selectedService?.consultation)
   const isOutcall = selectedService?.category === 'Outcall Makeup'
   const isLesson = selectedService?.category === 'Lessons'
@@ -402,7 +396,7 @@ export default function Services({ onNavigate }: ServicesProps) {
 
   const addOns =
     isHair && selectedService
-      ? (extraLength ? 30 : 0) + (needHair ? 15 : 0)
+      ? (extraLength ? 15 : 0) + (blowDry ? 10 : 0) + (curlyEnds ? 15 : 0) + (customExtensions ? 20 : 0)
       : 0
 
   const totalPrice = chosenPrice === null ? null : chosenPrice + addOns
@@ -418,7 +412,9 @@ export default function Services({ onNavigate }: ServicesProps) {
     setShowPaymentInstructions(false)
     setSelectedOption(service.sizes?.[0]?.label ?? '')
     setExtraLength(false)
-    setNeedHair(false)
+    setBlowDry(false)
+    setCurlyEnds(false)
+    setCustomExtensions(false)
     setAppointmentDate('')
     setAppointmentTime('')
     setCustomerName('')
@@ -477,8 +473,11 @@ Remaining balance: ${money(balance!)}`
       'BOOKING DETAILS',
       `Service: ${selectedService.title}`,
       selectedOption ? `Size/style: ${selectedOption}` : '',
-      isHair ? `Length: ${extraLength ? 'Extra length (+£30)' : 'Standard mid-back'}` : '',
-      isHair ? `Braiding hair: ${needHair ? 'Needed (+£15)' : 'Bringing my own'}` : '',
+      isHair ? `Standard length: mid-back` : '',
+      isHair ? `Extra length / butt length: ${extraLength ? 'Yes (+£15)' : 'No'}` : '',
+      isHair ? `Blow drying: ${blowDry ? 'Yes (+£10)' : 'No'}` : '',
+      isHair ? `Curly ends: ${curlyEnds ? 'Yes (+£15)' : 'No'}` : '',
+      isHair ? `Customised braiding extensions: ${customExtensions ? 'Yes (+£20)' : 'No'}` : '',
       `Preferred date: ${formatDate(appointmentDate)}`,
       `Preferred time: ${appointmentTime}`,
       isOutcall ? `Location/address: ${locationAddress.trim()}` : '',
@@ -540,7 +539,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
       alternate: true,
     },
     {
-      title: 'Braids, Cornrows & Twists',
+      title: 'Hair services',
       eyebrow: 'Hair Styling',
       category: 'Braids',
     },
@@ -567,7 +566,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
               Our Services.
             </h1>
             <p className="max-w-sm leading-relaxed text-[#4A4540]">
-              Explore makeup, brows, lashes and hairstyling. Choose a service to open its booking form, with extra questions where needed for bridal, home-service, hair and lesson bookings.
+        Make up . Microblading.  Lash extensions and Hair braiding services 
             </p>
           </div>
         </div>
@@ -591,6 +590,13 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
               {section.category === 'Outcall Makeup' && (
                 <div className="mb-10 bg-[#1C1915] px-5 py-4 text-sm leading-relaxed text-[#FAF8F4]" style={{ borderRadius: 'var(--radius)' }}>
                   <span className="font-medium text-[#C8956C]">Please note:</span> Transport costs are not included and will be confirmed before payment.
+                </div>
+              )}
+
+              {section.category === 'Braids' && (
+                <div className="mb-10 bg-white/70 px-5 py-4 text-sm leading-relaxed text-[#4A4540]" style={{ borderRadius: 'var(--radius)' }}>
+                  <p><strong className="text-[#1C1915]">Standard length:</strong> Mid-back.</p>
+                  <p className="mt-2"><strong className="text-[#1C1915]">Optional add-ons:</strong> Extra length / butt length £15 · Blow drying £10 · Curly ends £15 · Customised braiding extensions £20.</p>
                 </div>
               )}
 
@@ -618,10 +624,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
                 q: 'Are transport fees included?',
                 a: 'No. Outcall transport fees are confirmed separately before payment.',
               },
-              {
-                q: 'What is the standard braiding length?',
-                a: 'The standard length is mid-back. Extra length is a £30 add-on. Braiding hair is listed as a £15 add-on. Men’s hairstyle prices include extensions.',
-              },
+             
               {
                 q: 'Is my appointment confirmed after submitting?',
                 a: 'No. Submit your booking details on WhatsApp and wait for Fatima to confirm the appointment. The website does not show live availability or verify transfers.',
@@ -701,15 +704,27 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
             )}
 
             {isHair && (
-              <div className="mb-5 grid gap-5 sm:grid-cols-2">
-                <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
-                  <input type="checkbox" checked={extraLength} onChange={(event) => setExtraLength(event.target.checked)} className="accent-[#8C5E3A]" />
-                  Extra length (+£30)
-                </label>
-                <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
-                  <input type="checkbox" checked={needHair} onChange={(event) => setNeedHair(event.target.checked)} className="accent-[#8C5E3A]" />
-                  I need braiding hair (+£15)
-                </label>
+              <div className="mb-5">
+                <p className="mb-3 text-sm font-medium text-[#1C1915]">Hair options &amp; add-ons</p>
+                <p className="mb-4 text-xs text-[#7A726A]">Standard length is mid-back. Select any optional extras you would like; additional charges will be added to your estimate.</p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
+                    <input type="checkbox" checked={extraLength} onChange={(event) => setExtraLength(event.target.checked)} className="accent-[#8C5E3A]" />
+                    Extra length / butt length (+£15)
+                  </label>
+                  <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
+                    <input type="checkbox" checked={blowDry} onChange={(event) => setBlowDry(event.target.checked)} className="accent-[#8C5E3A]" />
+                    Blow drying (+£10)
+                  </label>
+                  <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
+                    <input type="checkbox" checked={curlyEnds} onChange={(event) => setCurlyEnds(event.target.checked)} className="accent-[#8C5E3A]" />
+                    Curly ends (+£15)
+                  </label>
+                  <label className="flex items-center gap-3 border border-[#D8D0C4] bg-white p-4 text-sm text-[#1C1915]">
+                    <input type="checkbox" checked={customExtensions} onChange={(event) => setCustomExtensions(event.target.checked)} className="accent-[#8C5E3A]" />
+                    Customised braiding extensions (+£20)
+                  </label>
+                </div>
               </div>
             )}
 
@@ -877,7 +892,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
                   <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
                     <li>Avoid scheduling other commitments close to your appointment, as the service may take longer than expected.</li>
                     <li>No plus-ones are allowed, except a client under 10 years old attending with a parent or carer.</li>
-                    <li>Standard braiding extensions are included in the cost and standard length is waist length. Curly or customised extensions cost an additional £20, blow-drying costs £10, and curled ends cost £15.</li>
+                    <li>Standard braiding length is mid-back. Extra length / butt length costs an additional £15, blow-drying costs £10, curly ends cost £15, and customised braiding extensions cost £20.</li>
                     <li>If you prefer to bring your own extensions, they must be pre-stretched and dropped off at Fatima’s address at least 24 hours before the appointment for preparation.</li>
                   </ul>
                 </section>
@@ -995,3 +1010,6 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
     </main>
   )
 }
+
+
+
