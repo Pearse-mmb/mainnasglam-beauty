@@ -285,7 +285,7 @@ export default function Home({ onNavigate }: HomeProps) {
           </p>
 
           <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-[-0.035em] text-[#FBF6F0] mb-8 leading-tight">
-            Your next glam look starts here.
+        Your next glam appointment starts here
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center">

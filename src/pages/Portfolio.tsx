@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact' | 'booking'
-type Category = 'All' | 'Makeup' | 'Microblading' | 'Lashes' | 'Braids'
+type Category = 'All' | 'Makeup' | 'Brows' | 'Lashes' | 'Braids' | 'Microblading'
 
 interface PortfolioProps {
   onNavigate: (page: Page) => void
@@ -18,26 +18,21 @@ type PortfolioItem = {
 const INSTAGRAM_DM = 'https://www.instagram.com/mainnasglam_beauty/'
 
 
-/*
- * Keep each image assigned to its correct service category.
- * When adding work, place it in the matching category and use its exact
- * filename from the public folder.
- */
 const items: PortfolioItem[] = [
   // MAKEUP IMAGES ONLY
   {
     id: 1,
     cat: 'Makeup',
     img: '/makeupa.jpeg',
-    title: 'Full Glam',
-    credit: 'Full glam makeup look',
+    title: 'Bridal Glam ',
+    credit: 'Bridal Glam makeup look',
   },
   {
     id: 2,
     cat: 'Makeup',
     img: '/makeupc.png',
-    title: 'Bridal Glam',
-    credit: 'Bridal makeup look',
+    title: 'Bridesmaids / Asoebi Ladies',
+    credit: 'Bridesmaids and asoebi makeup look',
   },
   {
     id: 4,
@@ -50,39 +45,39 @@ const items: PortfolioItem[] = [
     id: 5,
     cat: 'Makeup',
     img: '/makeupe.png',
-    title: 'Bridal Beauty',
-    credit: 'Bridal beauty look',
+    title: 'soft glam ',
+    credit: 'Soft glam ',
   },
 
   // MICROBLADING / BROWS IMAGES ONLY
-  {
-    id: 8,
-    cat: 'Microblading',
-    img: '/bladingq.jpeg',
-    title: 'Microblading',
-    credit: 'Microblading brow treatment',
-  },
-  {
-    id: 9,
-    cat: 'Microblading',
-    img: '/ob.jpeg',
-    title: 'Brow Artistry',
-    credit: 'Eyebrow treatment',
-  },
-  {
-    id: 10,
-    cat: 'Microblading',
-    img: '/ob1.jpeg',
-    title: 'Brow Enhancement',
-    credit: 'Eyebrow enhancement',
-  },
-  {
-    id: 11,
-    cat: 'Microblading',
-    img: '/ob2.jpeg',
-    title: 'Brow Results',
-    credit: 'Microblading results',
-  },
+ {
+  id: 8,
+  cat: 'Brows',
+  img: '/bladingq.jpeg',
+  title: 'Ombré Brow',
+  credit: 'Ombré brow treatment',
+},
+{
+  id: 9,
+  cat: 'Brows',
+  img: '/ob.jpeg',
+  title: 'Ombré Brow',
+  credit: 'Ombré brow treatment',
+},
+{
+  id: 10,
+  cat: 'Brows',
+  img: '/ob1.jpeg',
+  title: 'Ombré Brow',
+  credit: 'Ombré brow treatment',
+},
+{
+  id: 11,
+  cat: 'Brows',
+  img: '/ob2.jpeg',
+  title: 'Ombré Brow',
+  credit: 'Ombré brow treatment',
+},
 
   // LASH IMAGES ONLY
   {
@@ -103,8 +98,8 @@ const items: PortfolioItem[] = [
     id: 7,
     cat: 'Lashes',
     img: '/hybridlashset.jpeg',
-    title: 'Hybrid Lash Close-Up',
-    credit: 'Hybrid lash extensions close-up',
+    title: 'Hybrid Lash set',
+    credit: 'Hybrid lash set',
   },
 
   // BRAID IMAGES ONLY
@@ -124,7 +119,7 @@ const items: PortfolioItem[] = [
   },
 ]
 
-const categories: Category[] = ['All', 'Makeup', 'Microblading', 'Lashes', 'Braids']
+const categories: Category[] = ['All', 'Makeup', 'Brows', 'Lashes', 'Braids']
 const serviceCategories: Exclude<Category, 'All'>[] = [
   'Makeup',
   'Microblading',

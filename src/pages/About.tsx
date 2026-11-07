@@ -24,15 +24,15 @@ export default function About({ onNavigate }: AboutProps) {
         'A 50% non-refundable deposit is required to secure your booking. This will be deducted from the total price, and the balance will be paid in cash or by transfer on the day of your appointment.',
       ],
     },
-    {
-      title: 'All Appointments',
-      content: [
-        'Kindly avoid booking other commitments close to your appointment time, as services may take longer in certain circumstances.',
-        'No plus-ones are allowed, except for a client under 10 who must attend with their parent or carer.',
-        'All braiding extensions are included in the cost except Curly/customised extensions cost £20, blow-drying costs £10, and curled ends cost £15. If you wish to bring your own extensions, they must be pre-stretched and dropped off at my address at least 24 hours before your appointment for preparation.',
-        'For microblading and lash extensions, please do not boonjmjpkk if you are pregnant, breastfeeding, taking blood thinners, have a history of severe keloids, uncontrolled diabetes, severe allergic reactions, significant immune problems, or bleeding/clotting problems. Please also avoid booking if you have recently had Botox around the brows. The client also lists naturally well-defined brows as a reason not to book for microblading.',
-      ],
-    },
+   {
+  title: 'All Appointments',
+  content: [
+    'Kindly avoid booking other commitments close to your appointment time, as services may take longer in certain circumstances.',
+    'No plus-ones are allowed, except for a client under 10 who must attend with their parent or carer.',
+    'Hair extensions are not included in the service fee. Blow-drying costs an additional £10, while curly ends cost an additional £15. Hair extensions must be dropped off at Fatima’s address at least 24 hours before the appointment so they can be prepared in advance.',
+    'For microblading and lash extensions, please do not book if you are pregnant, breastfeeding, taking blood thinners, have a history of severe keloids, uncontrolled diabetes, severe allergic reactions, significant immune problems, or bleeding/clotting problems. Please also avoid booking if you have recently had Botox around the brows. Naturally well-defined brows may also be unsuitable for microblading.',
+  ],
+},
     {
       title: 'Cancellation & Rescheduling',
       content: [
