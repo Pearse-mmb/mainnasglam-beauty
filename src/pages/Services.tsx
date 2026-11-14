@@ -261,32 +261,15 @@ const services: Service[] = [
     ],
   },
   { title: 'Smedium Knotless Braids', price: null, category: 'Braids' },
-  {
-    title: 'Boho Braids', price: null, category: 'Braids', startingAt: true,
-    sizes: [
-      { label: 'Medium — shoulder length', price: 100 },
-      { label: 'Smedium — shoulder length', price: 110 },
-      { label: 'Medium — mid-back length', price: 130 },
-      { label: 'Smedium — mid-back length', price: 140 },
-      { label: 'Medium — waist length', price: 150 },
-      { label: 'Smedium — waist length', price: 180 },
-      { label: 'Small — mid-back length', price: 200 },
-    ],
-  },
-  { title: 'Fulani Braids', price: null, category: 'Braids' },
-  {
-    title: 'Crochet Faux Locs', price: null, category: 'Braids', startingAt: true,
-    sizes: [
-      { label: 'Medium — shoulder length', price: 60 },
-      { label: 'Medium — mid-back length', price: 85 },
-      { label: 'Medium — waist length', price: 100 },
-      { label: 'Medium — butt length', price: 120 },
-      { label: 'Small — shoulder length', price: 80 },
-      { label: 'Small — mid-back length', price: 90 },
-      { label: 'Small — waist length', price: 100 },
-      { label: 'Small — butt length', price: 120 },
-    ],
-  },
+ {
+  title: 'Boho Braids', price: null, category: 'Braids', startingAt: true,
+  sizes: [
+    { label: 'Shoulder length', price: 90 },
+    { label: 'Mid-back length', price: 120 },
+    { label: 'Waist length', price: 150 },
+    { label: 'Butt length', price: 180 },
+  ],
+},
   {
     title: 'Boho French Curls', price: null, category: 'Braids', startingAt: true,
     sizes: [
@@ -697,7 +680,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
           {(section.category === 'Braids' || section.category === "Men's Hairstyles") && (
             <div className="mb-10 bg-white/70 px-5 py-4 text-sm leading-relaxed text-[#4A4540]" style={{ borderRadius: 'var(--radius)' }}>
               <p>
-                <strong className="text-[#1C1915]">Please note:</strong> Hair extensions are not included where required. Check each hairstyle’s price details for its specific requirements and additional charges.
+                <strong className="text-[#1C1915]">Please note:</strong> Hair extensions are included where required. Check each hairstyle’s price details for its specific requirements and additional charges.
               </p>
               <p className="mt-2">
                 <strong className="text-[#1C1915]">Optional add-ons:</strong> Blow-drying £10 · Curly ends £15, where applicable.
