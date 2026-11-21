@@ -1107,7 +1107,7 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
                   <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#4A4540]">
                     <li>Avoid scheduling other commitments close to your appointment, as the service may take longer than expected.</li>
                     <li>No plus-ones are allowed, except a client under 10 years old attending with a parent or carer.</li>
-                    <li>If you prefer to bring your own extensions, they must be pre-stretched and dropped off at Fatima’s address at least 24 hours before the appointment for preparation.</li>
+                    <li>If you’re bringing your own hair extensions, they must be pre stretched packs. Otherwise, they should be dropped off at least 24 hours before the appointment for preparation.</li>
                   </ul>
                 </section>
 
