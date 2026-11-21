@@ -677,19 +677,49 @@ Time I need to be ready: ${readyTime}${isBridal || selectedService.title.include
                 </div>
               )}
 
-          {(section.category === 'Braids' || section.category === "Men's Hairstyles") && (
-            <div className="mb-10 bg-white/70 px-5 py-4 text-sm leading-relaxed text-[#4A4540]" style={{ borderRadius: 'var(--radius)' }}>
-              <p>
-                <strong className="text-[#1C1915]">Please note:</strong> Hair extensions are included where required. Check each hairstyle’s price details for its specific requirements and additional charges.
-              </p>
-              <p className="mt-2">
-                <strong className="text-[#1C1915]">Optional add-ons:</strong> Blow-drying £10 · Curly ends £15, where applicable.
-              </p>
-              <p className="mt-2">
-                If you are bringing your own extensions, they must be dropped off before your appointment date.
-              </p>
-            </div>
-          )}
+            {(section.category === 'Braids' || section.category === "Men's Hairstyles") && (
+              <div
+                className="mb-10 bg-white/70 px-5 py-4 text-sm leading-relaxed text-[#4A4540]"
+                style={{ borderRadius: 'var(--radius)' }}
+              >
+              
+                <p>
+                  <strong className="text-[#1C1915]">Please note:</strong>{' '}
+                  Hair extensions are not included in the service fee. Check each
+                  hairstyle’s price details for its specific requirements and
+                  additional charges.
+                </p>
+
+                <p className="mt-2">
+                  <strong className="text-[#1C1915]">Optional add-on:</strong>{' '}
+                  Blow-drying £10. Curly ends £15.
+                </p>
+
+                <p className="mt-2">
+                  Kindly drop off your extensions before the appointment date.
+                </p>
+
+                <p className="mt-2">
+                  If you require hair extensions, please indicate this on WhatsApp
+                  after checkout.
+                </p>
+
+                <p className="mt-2">
+                  <strong className="text-[#1C1915]">Optional add-ons:</strong>{' '}
+                  Blow-drying £10 · Curly ends £15, where applicable.
+                </p>
+
+                <p className="mt-2">
+                  Kindly drop off your own extensions before your appointment date.
+                </p>
+
+                <p className="mt-2">
+                  If you require hair extensions, please indicate this via WhatsApp
+                  after checkout.
+                </p>
+              </div>
+            )}
+
               <div className={`grid gap-5 ${section.category === 'In-Call Makeup' ? 'sm:grid-cols-2 lg:grid-cols-4' : section.category === 'Lessons' ? 'md:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-3'}`}>
                 {items.map((service) => (
                   <ServiceCard key={service.title} service={service} onBook={openBooking} />
